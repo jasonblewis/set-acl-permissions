@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# this script sets recursively a subdirectory to have the correct
+# permissions and ACLs so that any user in the group can read and
+# write files at will. and the permissions should preserve themselves.
+
+# usage: set-acl-permissions <group name> <some/path>
+
+# be careful using this.
+
+if [[ $# -ne 2 ]]
+then 
+     echo "Usage: ${0##*/} group directory"
+     exit 1
+fi
+
+if [[ $2 -d ]]
+then
+    # change everything under $2 to group $1
+    chgrp -R "$1" "$2"
+    # +s preserves group ownership on new files
+    chmod g+s "$2"
+    # make all directories group writeable and executable
+    find "$2" -type d -exec chmod g+wsX {} +
+    setfacl -m "default:group::rwX" "$2"
+    find "$2"  -exec setfacl -m d:g::rwX {} +
+else
+    echo "Error: $2 is not a valid directory";
+    exit 1;
+fi
