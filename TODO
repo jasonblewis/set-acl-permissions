@@ -1,0 +1,2 @@
+* check group is valid and exists
+* check filesystem is actually capable of ACL
