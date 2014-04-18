@@ -5,5 +5,9 @@ change the group of all the files and directories to specified group.
 * Usage:
 Usage: set-acl-permissions <group> <directory>
 
+* Inspired by:
+  http://superuser.com/questions/151911/how-to-make-new-file-permission-inherit-from-the-parent-directory
+  and
+  https://superuser.com/questions/381416/forcing-group-and-permissions-for-created-file-inside-folder/381525#381525
 
 
