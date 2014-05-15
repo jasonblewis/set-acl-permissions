@@ -14,7 +14,7 @@ then
      exit 1
 fi
 
-if [[ $2 -d ]]
+if [[ -d $2 ]]
 then
     # change everything under $2 to group $1
     chgrp -R "$1" "$2"
