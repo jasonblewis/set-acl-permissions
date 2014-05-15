@@ -22,8 +22,12 @@ then
     chmod g+s "$2"
     # make all directories group writeable and executable
     find "$2" -type d -exec chmod g+wsX {} +
+    # set default group and permissions for the directory
     setfacl -m "default:group::rwX" "$2"
-    find "$2"  -exec setfacl -m d:g::rwX {} +
+    # set default permissions for the subdirectories
+    find "$2" -type d -exec setfacl -m d:g::rwX {} +
+    # make all files group writeable
+    find "$2" -type f -exec chmod g+w {} +
 else
     echo "Error: $2 is not a valid directory";
     exit 1;
