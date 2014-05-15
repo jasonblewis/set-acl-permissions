@@ -2,6 +2,9 @@
 Recursively set ACL group permissions on a subdirectory, and also
 change the group of all the files and directories to specified group.
 
+It requires that the given directory is on a filesystem with ACL
+enabled. See [[https://wiki.archlinux.org/index.php/Access_Control_Lists#Enabling_ACL][Enabling ACLs]] for details of how to do that.
+
 * Usage:
 Usage: set-acl-permissions <group> <directory>
 
